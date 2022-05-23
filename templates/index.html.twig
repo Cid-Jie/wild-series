@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Wild Series</title>
-</head>
-<body>
-   <h1>Bienvenue sur {{ website }}</h1>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Wild Series{% endblock %}
+
+
+{% block body %}
+<img id="bandefilm" src="{{ asset('build/images/bandefilm.jpg') }}" alt="bande film"/>
+<h1 class="text-center mt-5 mb-5">A LA UNE</h1>
+
+{% endblock %}

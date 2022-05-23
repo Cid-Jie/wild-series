@@ -1,0 +1,30 @@
+@import "~bootstrap/scss/bootstrap";
+
+$color-dark: black;
+$secondary-color: #FCD445;
+$color-light: white;
+
+body {
+    background-color: $color-dark;
+}
+
+body {
+    color: $color-light;
+}
+
+.navbar-collapse {
+    flex-grow: unset;
+}
+
+.navbar {
+    background-color: $secondary-color;
+}
+
+a, a.nav-link {
+    color: $color-dark;
+}
+
+#bandefilm {
+    width: 100%;
+    height: 250px;
+}
