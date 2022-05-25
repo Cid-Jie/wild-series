@@ -24,3 +24,20 @@ body {
     width: 100%;
     height: 250px;
 }
+
+.photo_serie {
+    width: 10rem;
+}
+
+.container_category, .container_series {
+    background-image: url(../images/series.jpeg);
+    opacity: 0.6;
+}
+
+a {
+    color: $color-dark;
+}
+
+h2 a {
+    color: $color-light;
+}

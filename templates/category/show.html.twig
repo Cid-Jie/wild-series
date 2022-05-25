@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}By Category{% endblock %}
+
+
+{% block body %}
+<main class="container_category">
+	<div class="container">
+		{% if category.name is defined %}
+		<div>
+				<h1 class="text-center mt-5 mb-5">{{ category.name }}</h1>
+		</div>
+
+		{% for program in programs %}
+
+			<h2 class="text-center mt-5 mb-5"><a href="{{ path("program_show", { id: program.id } ) }}">{{ program.title }}</a><h2>
+
+			<div class="media_series">
+				<p class="text-center">
+					<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p>
+				<p>{{ program.synopsis }}</p>
+				
+			</div>
+
+		{% endfor %}
+
+		{% else %}
+        	
+			<h2 class="text-center mt-5 mb-5"> Désolé, aucune catégorie de ce nom trouvée.</h2>
+    	
+		{% endif %}
+
+	<h2><a href="{{ path('category_index') }}">Retour à la liste des catégories</a></h2>
+	</div>
+</main>
+{% endblock %}

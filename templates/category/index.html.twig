@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Categories{% endblock %}
+
+{% block body %}
+<main class="container_category">
+    <div class="container">
+    <h1 class="text-center mt-5 mb-5">Toutes les catégories :</h1>
+    {% for category in categories %}
+        <div >
+            <h2 class="mt-5 mb-5">
+            <button class="btn btn-secondary btn-lg"><a href="/category/{{category.name}}"> {{ category.name }}</a></button>
+            </h2>
+        </div>
+           
+    {% endfor %}
+    <p class="text-center mt-5 mb-5">
+    <a href="{{ path('app_index') }}"> Retour à l'accueil</a>
+    <p>
+    </div>
+</main>
+
+{% endblock %}
