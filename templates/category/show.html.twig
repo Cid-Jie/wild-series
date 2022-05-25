@@ -8,29 +8,30 @@
 	<div class="container">
 		{% if category.name is defined %}
 		<div>
-				<h1 class="text-center mt-5 mb-5">{{ category.name }}</h1>
+			<h1 class="text-center mt-5 mb-5">{{ category.name }}</h1>
+		</div>
+		{% for program in programs %}
+		<div class="container_series"> 
+		
+		<a href="{{ path("program_show", { id: program.id } ) }}"><h2 class="text-center mt-5 mb-3">{{ program.title }}</h2></a>
+
+		
+			<p class="text-center mt-5">
+				<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie">
+			</p>
+
+			<p class="text-center m-5">{{ program.synopsis }}</p>
 		</div>
 
-		{% for program in programs %}
-
-			<h2 class="text-center mt-5 mb-5"><a href="{{ path("program_show", { id: program.id } ) }}">{{ program.title }}</a><h2>
-
-			<div class="media_series">
-				<p class="text-center">
-					<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p>
-				<p>{{ program.synopsis }}</p>
-				
-			</div>
-
 		{% endfor %}
-
 		{% else %}
-        	
-			<h2 class="text-center mt-5 mb-5"> Désolé, aucune catégorie de ce nom trouvée.</h2>
-    	
+			<h2 class="text-center mt-5 mb-5"> Désolé, aucune catégorie de ce nom trouvée.</h2>    	
 		{% endif %}
 
-	<h2><a href="{{ path('category_index') }}">Retour à la liste des catégories</a></h2>
+		<p class="mt-5 mb-5">
+			<a href="{{ path('category_index') }}">Retour à la liste des catégories</a>
+		</p>
+
 	</div>
 </main>
 {% endblock %}

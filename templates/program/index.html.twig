@@ -1,25 +1,24 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}All Programs{% endblock %}
 
-
 {% block body %}
-<main class="container_series">
-    <div class="container">
+<main class="container_all_series">
+    <div class="container_series">
         <h1 class="text-center mt-5 mb-5">Toutes les séries :</h1>
         {% for program in programs %}
             <div>
-                <h2 class="text-center mt-5 mb-5"> {{ loop.index }} / {{ program.title }} - {{ program.category.name }} </h2>
+                <h2 class="text-center mt-5 mb-2"> {{ loop.index }} / {{ program.title }} - {{ program.category.name }} </h2>
+                <p class="text-center"><a href="{{ path("program_show", { id: program.id } ) }}">Voir en détail</a></p>
                 <p class="text-center"> <img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p> 
-                <p> {{ program.synopsis }} </p>
-                <a href="{{ path("program_show", { id: program.id } ) }}">Voir la fiche</a>
+                <p class="text-center m-5"> {{ program.synopsis }} </p>
+                
             </div>
         {% else %}
             <p class="text-center mt-5 mb-5"> Désolé, aucune série trouvée.</p>
         {% endfor %}
 
-        <a href="{{ path('app_index') }}"> Retour à l'accueil</a>
+        <p class="float-left mb-5"><a href="{{ path('app_index') }}"> Retour à l'accueil</a></p>
     </div>
 </main>
 {% endblock %}

@@ -11,12 +11,12 @@
         <h1 class="text-center mt-5 mb-5">{{ program.title }}</h1>
         <p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster"></p>
         <div class="media-body mt-5">    
-            <p>{{ program.synopsis }}</p>
-            <p> Catégorie : {{ program.category.name }}</p>
+            <p class="text-center">{{ program.synopsis }}</p>
+            <p class="text-center"> Catégorie : {{ program.category.name }}</p>
         </div>
     
         <h2 class="mt-5 mb-5">
-            <a href="{{ path('program_index') }}">Voir toutes les séries</a>
+            <a href="{{ path('program_index') }}">Retour vers toutes les séries</a>
         </h2>
     </div>
 

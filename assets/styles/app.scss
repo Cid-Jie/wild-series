@@ -1,7 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 $color-dark: black;
-$secondary-color: #FCD445;
+$secondary-color: #f1ca3a;
 $color-light: white;
 
 body {
@@ -14,10 +15,20 @@ body {
 
 .navbar-collapse {
     flex-grow: unset;
+    font-family: Permanent Marker, sans-serif;
+    color: $color-dark;
 }
 
-.navbar {
+.navbar-light .navbar-nav .nav-link {
+    color: $color-dark;
+}
+
+.navbar, .btn {
     background-color: $secondary-color;
+}
+
+h1, a.navbar-brand, a {
+    font-family: Permanent Marker, sans-serif;
 }
 
 #bandefilm {
@@ -29,15 +40,33 @@ body {
     width: 10rem;
 }
 
-.container_category, .container_series {
+.container_category {
     background-image: url(../images/series.jpeg);
-    opacity: 0.6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-a {
+a, button a {
     color: $color-dark;
+    text-decoration: none;
 }
 
-h2 a {
+h2, a {
     color: $color-light;
+}
+
+.container_series {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: $color-dark;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.container_all_series {
+    background-image: url(../images/all-series.jpg);
+
 }
