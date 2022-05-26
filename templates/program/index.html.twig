@@ -9,7 +9,7 @@
         {% for program in programs %}
             <div>
                 <h2 class="text-center mt-5 mb-2"> {{ loop.index }} / {{ program.title }} - {{ program.category.name }} </h2>
-                <p class="text-center"><a href="{{ path("program_show", { id: program.id } ) }}">Voir en détail</a></p>
+                <p class="text-center"><a href="{{ path("program_show", { id: program.id }) }}">Voir en détail</a></p>
                 <p class="text-center"> <img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p> 
                 <p class="text-center m-5"> {{ program.synopsis }} </p>
                 
