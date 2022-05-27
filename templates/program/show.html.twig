@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Série : {{ program.title }} {% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
 	<main class="container_all_series">
@@ -14,11 +14,11 @@
 						Catégorie :
 						{{ program.category.name }}</p>
 				</div>
-				<div class="series_list mb-5 mt-5">
+				<div class="series_list text-center mb-5 mt-5">
 					<h1>Saisons disponibles :</h1>
 					<ul>
 						{% for season in seasons %}
-							<li>
+							<li class="mt-5 mb-5">
 								<a href="/program/{{ program.id }}/season/{{ season.id }}">
                                 Saison {{season.number}} ({{ season.year}})</a>
 							</li>
