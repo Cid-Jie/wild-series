@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 
 $color-dark: black;
 $secondary-color: #f1ca3a;
@@ -68,4 +69,9 @@ h2, a {
 
 .container_all_series {
     background-image: url(../images/all-series.jpg);
+}
+
+p {
+    font-family: Roboto, sans-serif;
+    color: $color-light;
 }

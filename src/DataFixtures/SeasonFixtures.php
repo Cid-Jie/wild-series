@@ -21,7 +21,7 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         * de te générer toutes les données que tu souhaites
         */
         for($i = 1; $i <= 10; $i++) {
-            for($j = 0; $j <= 10; $j++) {
+            for($j = 1; $j <= 10; $j++) {
                 $season = new Season();
                 //Ce Faker va nous permettre d'alimenter l'instance de Season que l'on souhaite ajouter en base
                 $season->setNumber(($j));
