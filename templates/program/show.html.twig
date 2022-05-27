@@ -7,18 +7,16 @@
 		<div class="container">
 			<div class="container_series">
 				<h1 class="text-center mt-5 mb-2">{{ program.title }}</h1>
-				<p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster"></p>
-				<div class="media-body mt-5">
+				<p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></p>
+				<div>
 					<p class="text-center">{{ program.synopsis }}</p>
 					<p class="text-center">
 						Catégorie :
 						{{ program.category.name }}</p>
-				</div>
-				<div class="series_list text-center mb-5 mt-5">
-					<h1>Saisons disponibles :</h1>
+					<h1 class="text-center">Saisons disponibles :</h1>
 					<ul>
 						{% for season in seasons %}
-							<li class="mt-5 mb-5">
+							<li class="text-center">
 								<a href="/program/{{ program.id }}/season/{{ season.id }}">
                                 Saison {{season.number}} ({{ season.year}})</a>
 							</li>

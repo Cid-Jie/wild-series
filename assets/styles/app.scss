@@ -38,7 +38,7 @@ h1, a.navbar-brand, a {
 }
 
 .photo_serie {
-    width: 10rem;
+    width: 16rem;
 }
 
 .container_category {
@@ -74,4 +74,10 @@ h2, a {
 p {
     font-family: Roboto, sans-serif;
     color: $color-light;
+}
+
+@media (min-width: 390px) {
+    #poster {
+        width: 16rem;
+    }
 }
