@@ -58,7 +58,7 @@ h2, a {
 
 .container_series {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: $color-dark;

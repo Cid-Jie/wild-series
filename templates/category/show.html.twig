@@ -1,37 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}By Category{% endblock %}
-
+{% block title %}Category {{ category.name }}{% endblock %}
 
 {% block body %}
-<main class="container_category">
-	<div class="container">
-		{% if category.name is defined %}
-		<div>
-			<h1 class="text-center mt-5 mb-5">{{ category.name }}</h1>
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				{% if category.name is defined %}
+					<div>
+						<h1 class="text-center mt-5 mb-5">{{ category.name }}</h1>
+					</div>
+					{% for program in programs %}
+						<div class="container_series">
+
+							<a href="{{ path("program_show", { id: program.id } ) }}">
+								<h2 class="text-center mt-5 mb-3">{{ program.title }}</h2>
+							</a>
+
+							<p class="text-center mt-5">
+								<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie">
+							</p>
+
+							<p class="text-center m-5">{{ program.synopsis }}</p>
+						</div>
+
+					{% endfor %}
+				{% else %}
+					<h2 class="text-center mt-5 mb-5">
+						Désolé, aucune catégorie de ce nom trouvée.</h2>
+				{% endif %}
+
+				<p class="text-center mt-5 mb-5">
+					<a href="{{ path('category_index') }}">Retour à la liste des catégories</a>
+				</p>
+			</div>
 		</div>
-		{% for program in programs %}
-		<div class="container_series"> 
-		
-		<a href="{{ path("program_show", { id: program.id } ) }}"><h2 class="text-center mt-5 mb-3">{{ program.title }}</h2></a>
-
-		
-			<p class="text-center mt-5">
-				<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie">
-			</p>
-
-			<p class="text-center m-5">{{ program.synopsis }}</p>
-		</div>
-
-		{% endfor %}
-		{% else %}
-			<h2 class="text-center mt-5 mb-5"> Désolé, aucune catégorie de ce nom trouvée.</h2>    	
-		{% endif %}
-
-		<p class="text-center mt-5 mb-5">
-			<a href="{{ path('category_index') }}">Retour à la liste des catégories</a>
-		</p>
-
-	</div>
-</main>
+	</main>
 {% endblock %}

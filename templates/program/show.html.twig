@@ -1,29 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Series # {{ program.id }} {% endblock %}
+{% block title %}Series #{{ program.id }}{% endblock %}
 
 {% block body %}
-<main class="container_series">
-
-    <div class="container">
-        <h1 class="text-center mt-5 mb-5">{{ program.title }}</h1>
-        <p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster"></p>
-        <div class="media-body mt-5">    
-            <p class="text-center">{{ program.synopsis }}</p>
-            <p class="text-center"> Catégorie : {{ program.category.name }}</p>
-        </div>
-        <div class="series_list mb-5 mt-5">
-        <h3>Saisons disponibles : </h3>
-            <ul>
-                {% for season in seasons %}
-                    <li> <a href="/program/{{ program.id }}/season/{{ season.id }}">Saison n° {{season.number}} - {{ season.year}}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <p class="text-center mt-5 mb-5">
-            <a href="{{ path('program_index') }}">Retour vers toutes les séries</a>
-        </p>
-    </div>
-
-</main>
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				<h1 class="text-center mt-5 mb-2">{{ program.title }}</h1>
+				<p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster"></p>
+				<div class="media-body mt-5">
+					<p class="text-center">{{ program.synopsis }}</p>
+					<p class="text-center">
+						Catégorie :
+						{{ program.category.name }}</p>
+				</div>
+				<div class="series_list mb-5 mt-5">
+					<h1>Saisons disponibles :</h1>
+					<ul>
+						{% for season in seasons %}
+							<li>
+								<a href="/program/{{ program.id }}/season/{{ season.id }}">
+                                Saison {{season.number}} ({{ season.year}})</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<p class="text-center mt-5 mb-5">
+					<a href="{{ path('program_index') }}">Retour vers toutes les séries</a>
+				</p>
+			</div>
+		</div>
+	</main>
 {% endblock %}
