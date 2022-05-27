@@ -13,10 +13,10 @@
 					<p class="text-center">
 						Catégorie :
 						{{ program.category.name }}</p>
-					<h1 class="text-center">Saisons disponibles :</h1>
+					<h1 class="text-center mt-5 mb-5">Saisons disponibles :</h1>
 					<ul>
 						{% for season in seasons %}
-							<li class="text-center">
+							<li class="text-center mt-5">
 								<a href="/program/{{ program.id }}/season/{{ season.id }}">
                                 Saison {{season.number}} ({{ season.year}})</a>
 							</li>
