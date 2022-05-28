@@ -5,9 +5,15 @@ namespace App\Entity;
 use App\Repository\SeasonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SeasonRepository::class)]
+#[UniqueEntity(
+    fields: 'number',
+    message: 'Cette saisoon existe déjà.'
+)]
 class Season
 {
     #[ORM\Id]
@@ -20,12 +26,15 @@ class Season
     private $program;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank(message: 'Veuillez entrer un numéro de saison.')]
     private $number;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\NotBlank(message: 'Veuillez entrer une année de sortie de cette saison.')]
     private $year;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: 'Veuillez entrer une description de cette saison.')]
     private $description;
 
     #[ORM\OneToMany(mappedBy: 'season', targetEntity: Episode::class)]
