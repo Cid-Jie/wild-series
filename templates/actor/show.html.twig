@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor
+{% endblock %}
+
+{% block body %}
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				<h1 class="text-center mt-5 mb-5">
+                {{ actor.firstname }} {{ actor.lastname }}
+                </h1> 
+                <h2 class="text-center mb-5">
+                né {{ actor.birthdate|date('Y-m-d') }}
+                </h2>
+                <pre>
+                    {{ dump(actor) }}
+                </pre>
+            <h1 class="text-center mt-5 mb-5">Séries : <h1>
+            {% for program in programs %}
+            <h2 class="text-center mt-5 mb-5">
+            Série {{ program.title }}</a>
+            </h2>
+            <p class="text-center">
+            <img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></li>
+            </p>
+            <p class="text-center mb-5">{{ program.synopsis }}</p>
+            {% endfor %}
+            </div>
+		</div>
+	</main>
+{% endblock %}

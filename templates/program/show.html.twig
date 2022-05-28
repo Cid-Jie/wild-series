@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ program.title }}{% endblock %}
+{% block title %}
+	{{ program.title }}
+{% endblock %}
 
 {% block body %}
 	<main class="container_all_series">
@@ -18,9 +20,20 @@
 						{% for season in seasons %}
 							<li class="text-center mt-5">
 								<a href="/program/{{ program.id }}/season/{{ season.id }}">
-                                Saison {{season.number}} ({{ season.year}})</a>
+									Saison
+									{{season.number}}
+									({{ season.year}})</a>
 							</li>
 						{% endfor %}
+					</ul>
+					<h1 class="text-center mt-5 mb-5">Acteurs :</h1>
+					<ul class= "text-center">
+						{% for actor in program.actors %}
+							<li><a href="">{{ actor.firstname }} {{actor.lastname }}</a></li>
+						{% else %}
+							<li>Aucun acteur pour cette série</li>
+						{% endfor %}
+
 					</ul>
 				</div>
 				<p class="text-center mt-5 mb-5">
