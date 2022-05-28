@@ -1,23 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Season index
-{% endblock %}
+{% block title %}Season index{% endblock %}
 
 {% block body %}
 	<main class="container">
 		<div class="container_series">
 			<h1 class="text-center mt-5 mb-5">Index des saisons</h1>
 			<p class="mb-5">
-				<a href="{{ path('app_season_new') }}">Create new</a>
+				<a href="{{ path('app_season_new') }}">Créer une nouvelle saison</a>
 			</p>
 				<table class="table">
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Number</th>
-							<th>Year</th>
+							<th>Numéro</th>
+							<th>Année</th>
 							<th>Description</th>
-							<th>actions</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>

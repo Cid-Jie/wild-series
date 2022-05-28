@@ -1,34 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episode{% endblock %}
+{% block title %}Episode
+{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				<h1 class="text-center mt-5 mb-5">Episode</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ episode.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ episode.title }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ episode.number }}</td>
-            </tr>
-            <tr>
-                <th>Synopsis</th>
-                <td>{{ episode.synopsis }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_episode_index') }}">back to list</a>
-
-    <a href="{{ path('app_episode_edit', {'id': episode.id}) }}">edit</a>
-
-    {{ include('episode/_delete_form.html.twig') }}
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<td>{{ episode.id }}</td>
+						</tr>
+						<tr>
+							<th>Titre</th>
+							<td>{{ episode.title }}</td>
+						</tr>
+						<tr>
+							<th>Numéro</th>
+							<td>{{ episode.number }}</td>
+						</tr>
+						<tr>
+							<th>Synopsis</th>
+							<td>{{ episode.synopsis }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-center mt-5 mb-3">
+					<a href="{{ path('app_episode_index') }}">back to list</a>
+				</p>
+				<p class="text-center mt-3 mb-5">
+					<button class="btn btn-secondary btn-sm">
+						<a href="{{ path('app_episode_edit', {'id': episode.id}) }}">edit</a>
+					</button>
+					{{ include('episode/_delete_form.html.twig') }}
+				</p>
+			</div>
+		</div>
+	</main>
 {% endblock %}

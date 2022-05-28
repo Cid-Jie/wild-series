@@ -21,7 +21,7 @@ class EpisodeType extends AbstractType
             ->add('synopsis', TextareaType::class)
             ->add('season', null, [
                 'choice_label' => function(Season $season) { 
-                    return $season->getProgram()->getTitle() . " - saison " . $season->getYear();
+                    return $season->getProgram()->getTitle() . " - saison " . $season->getNumber();
                 }
             ])
             ;

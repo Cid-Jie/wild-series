@@ -18,8 +18,9 @@ class SeasonType extends AbstractType
             ->add('year', NumberType::class)
             ->add('description', TextareaType::class)
             ->add('program', null, [
-                'choice_label' => 'number'
-                ]);
+                'choice_label' => 'title'
+                ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
