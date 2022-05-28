@@ -8,12 +8,11 @@
 			<div class="container_series">
 				<div class="text-center mt-5 mb-5">
 					<h1 class="text-center mt-5 mb-5">Ajouter une catégorie</h1>
-                    <div>
+                    <p class="my-custom-class-for-errors">
+                            {{ form_errors(form.name) }}
+					</p>
+					<div>
 					{{ form_start(form) }}
-
-                        <div class="my-custom-class-for-errors">
-                            {{ form_errors(form) }}
-
                         <p class="text-center mt-5 mb-1">
                             {{ form_label(form.name) }}
                         </p>
@@ -21,7 +20,8 @@
                             {{ form_widget(form.name) }}
                         </p>
                     </div>
-					<button class="btn btn-secondary btn-lg mt-5 mb-5" type="submit">Ajouter</button>
+
+					<button class="btn btn-secondary btn-sm mt-5 mb-5" type="submit">Ajouter</button>
 
 					{{ form_end(form) }}
 

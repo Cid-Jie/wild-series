@@ -10,6 +10,10 @@
 					<h1 class="text-center mt-5 mb-5">Ajouter une série</h1>
                     <div>
 					    {{ form_start(form) }}
+
+                    <p class="my-custom-class-for-errors">
+                        {{ form_errors(form.title) }}
+                    </p>
                         <p class="text-center mt-5 mb-1">
                             {{ form_label(form.title) }}
                         </p>
@@ -17,6 +21,9 @@
                             {{ form_widget(form.title) }}
                         </p>
 
+                    <p class="my-custom-class-for-errors">
+                        {{ form_errors(form.synopsis) }}
+                    </p>
                         <p class="text-center mt-5 mb-1">
                             {{ form_label(form.synopsis) }}
                         </p>
@@ -24,6 +31,9 @@
                             {{ form_widget(form.synopsis) }}
                         </p>
 
+                    <p class="my-custom-class-for-errors">
+                        {{ form_errors(form.poster) }}
+                    </p>
                         <p class="text-center mt-5 mb-1">    
                             {{ form_label(form.poster) }}
                         </p>
@@ -31,6 +41,9 @@
                             {{ form_widget(form.poster) }}
                         </p>
 
+                    <p class="my-custom-class-for-errors">
+                        {{ form_errors(form.category) }}
+                    </p>
                         <p class="text-center mt-5 mb-1">
                             {{ form_label(form.category) }}
                         </p>
@@ -39,12 +52,8 @@
                         </p>
 
                         <p class="text-center mt-5 mb-5">
-                        <div class="my-custom-class-for-errors">
-                            {{ form_errors(form) }}
 
-					        {{ form_widget(form) }}
-                        </div>
-					    <button class="btn btn-secondary btn-lg mt-5 mb-5" type="submit">Ajouter</button>
+					    <button class="btn btn-secondary btn-sm mt-5 mb-5" type="submit">Ajouter</button>
 
 					{{ form_end(form) }}
 
