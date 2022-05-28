@@ -3,9 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\EpisodeRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EpisodeRepository::class)]
+#[UniqueEntity(
+    fields: 'title',
+    message: 'Cet épisode existe déjà.'
+)]
 class Episode
 {
     #[ORM\Id]
@@ -18,12 +24,19 @@ class Episode
     private $season;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'Merci de rentrer un titre valide.')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "L\'épisode' saisie {{ value }} est trop long et ne doit pas dépasser {{ limit }} caractères."
+    )]
     private $title;
 
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank(message: 'Veuillez entrer un numéro d\'épisode.')]
     private $number;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: 'Veuillez entrer le synopsis de cet épisode.')]
     private $synopsis;
 
     public function getId(): ?int

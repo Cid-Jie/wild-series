@@ -2,6 +2,9 @@
 	<div class="container">
 		<div class="container_series">
             {{ form_start(form) }}
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.title) }}
+            </p>
             	<p class="text-center mt-5 mb-1">
 					{{ form_label(form.title) }}
 				</p>
@@ -9,6 +12,9 @@
 					{{ form_widget(form.title) }}
 				</p>
 
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.number) }}
+            </p>
 				<p class="text-center mt-5 mb-1">
 					{{ form_label(form.number) }}
 				</p>
@@ -16,12 +22,19 @@
 					{{ form_widget(form.number) }}
 				</p>
 
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.synopsis) }}
+            </p>
 				<p class="text-center mt-5 mb-1">
 					{{ form_label(form.synopsis) }}
 				</p>
 				<p class="text-center mt-1 mb-5">
 					{{ form_widget(form.synopsis) }}
 				</p>
+
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.season) }}
+            </p>
                 <p class="text-center mt-5 mb-1">
 					{{ form_label(form.season) }}
 				</p>
@@ -30,14 +43,9 @@
 				</p>
 
 				<p class="text-center mt-5 mb-5">
-					<div class="my-custom-class-for-errors">
-						{{ form_errors(form) }}
-
-						{{ form_widget(form) }}
-                        <p class="text-center">
-                            <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
-                        </p>
-                    </div>
+                    <p class="text-center">
+                        <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
+                    </p>
                 </p>
             {{ form_end(form) }}
 		</div>

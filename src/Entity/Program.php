@@ -25,7 +25,7 @@ class Program
     #[Assert\NotBlank(message: 'Merci de rentrer un titre valide.')]
     #[Assert\Length(
         max: 255,
-        maxMessage: "La série  saisie {{ value }} est trop longue et ne doit pas dépasser {{ limit }} caractères"
+        maxMessage: "La série  saisie {{ value }} est trop longue et ne doit pas dépasser {{ limit }} caractères."
     )]
     #[Assert\Regex(
         pattern: '/[Plus belle la vie]/i',
@@ -47,7 +47,6 @@ class Program
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'programs')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank(message: 'Veuillez sélectionner une catégorie.')]
     private $category;
 
     #[ORM\OneToMany(mappedBy: 'program', targetEntity: Season::class)]
