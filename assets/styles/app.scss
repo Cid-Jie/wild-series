@@ -76,6 +76,11 @@ p {
     color: $color-light;
 }
 
+.btn {
+    color: $color-dark;
+    font-family: Permanent Marker, sans-serif;
+}
+
 @media (min-width: 390px) {
     #poster {
         width: 16rem;

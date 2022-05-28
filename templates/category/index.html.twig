@@ -3,20 +3,27 @@
 {% block title %}Toutes les catégories{% endblock %}
 
 {% block body %}
-<main class="container_category">
-    <div class="container">
-        <h1 class="text-center mt-5 mb-5">Toutes les catégories :</h1>
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				<h1 class="text-center mt-5 mb-5">Toutes les catégories :</h1>
 
-    {% for category in categories %}
+				{% for category in categories %}
 
-        <h2 class="text-center mt-5 mb-5">
-            <button class="btn btn-secondary btn-lg"><a href="/category/{{category.name}}"> {{ category.name }}</a></button>
-        </h2>
-           
-    {% endfor %}
-        <p class="text-center mt-5 mb-5">
-            <a href="{{ path('app_index') }}"> Retour à l'accueil</a>
-        <p>
-    </div>
-</main>
+					<h2 class="text-center mt-5 mb-5">
+						<button class="btn btn-secondary btn-lg">
+							<a href="/category/{{category.name}}">
+								{{ category.name }}</a>
+						</button>
+					</h2>
+
+				{% endfor %}
+				<p class="text-center mt-5 mb-5">
+					<a href="{{ path('app_index') }}">
+						Retour à l'accueil</a>
+				</p>
+				<p></p>
+			</div>
+		</div>
+	</main>
 {% endblock %}
