@@ -81,6 +81,11 @@ p {
     font-family: Permanent Marker, sans-serif;
 }
 
+.table {
+    color: $color-light;
+    
+}
+
 @media (min-width: 390px) {
     #poster {
         width: 16rem;

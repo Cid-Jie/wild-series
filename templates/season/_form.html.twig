@@ -1,0 +1,46 @@
+<main class="container_all_series">
+	<div class="container">
+		<div class="container_series">
+				{{ form_start(form) }}
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.number) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.number) }}
+				</p>
+
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.year) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.year) }}
+				</p>
+
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.description) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.description) }}
+				</p>
+
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.program) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.program) }}
+				</p>
+
+				<p class="text-center mt-5 mb-5">
+					<div class="my-custom-class-for-errors">
+						{{ form_errors(form) }}
+
+						{{ form_widget(form) }}
+						<p class="text-center">
+							<button class="btn btn-secondary btn-lg">{{ button_label|default('Save') }}</button>
+						</p>
+					</div>
+				</p>
+            {{ form_end(form) }}
+		</div>
+	</div>
+</main>
