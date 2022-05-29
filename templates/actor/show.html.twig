@@ -1,32 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{actor.id}}
+{% block title %}Actor
 {% endblock %}
 
 {% block body %}
 	<main class="container_all_series">
 		<div class="container">
 			<div class="container_series">
-				<h1 class="text-center mt-5 mb-5">
-                {{ actor.firstname }} {{ actor.lastname }}
-                </h1> 
-                <h2 class="text-center mb-5">
-                né {{ actor.birthdate|date('Y-m-d') }}
-                </h2>
-                <h1 class="text-center mt-5 mb-5">Séries : <h1>
-                    {% for program in actor.programs %}
-                        <h2 class="text-center mt-5 mb-5">
-                        <a href="/program/{{ program.id }}">{{ program.title }}</a>
-                        </h2>  
-                        <p class="text-center">
-                        <img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></li>
-                        </p>
-                        <p class="text-center mb-5">{{ program.synopsis }}</p>
-                    {% endfor %}
-                <p class="text-center mt-5 mb-5">
-                <a href="{{ path('actor_index') }}">Retour à la liste des acteurs</a>
-                </p>
-            </div>
+
+				<h1 class="text-center mt-5 mb-5">Actor</h1>
+
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<td>{{ actor.id }}</td>
+						</tr>
+						<tr>
+							<th>Firstname</th>
+							<td>{{ actor.firstname }}</td>
+						</tr>
+						<tr>
+							<th>Lastname</th>
+							<td>{{ actor.lastname }}</td>
+						</tr>
+						<tr>
+							<th>Birth_date</th>
+							<td>{{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-center mt-5 mb-3">
+					<a href="{{ path('app_actor_index') }}">back to list</a>
+				</p>
+				<p class="text-center mt-3 mb-5">
+					<button class="btn btn-secondary btn-sm">
+						<a href="{{ path('app_actor_edit', {'id': actor.id}) }}">edit</a>
+					</button>
+					{{ include('actor/_delete_form.html.twig') }}
+				</p>
+			</div>
 		</div>
 	</main>
 {% endblock %}

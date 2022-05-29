@@ -1,0 +1,50 @@
+<main class="container_all_series">
+	<div class="container">
+		<div class="container_series">
+				{{ form_start(form) }}
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.firstname) }}
+            </p>
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.firstname) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.firstname) }}
+				</p>
+
+            <p class="my-custom-class-for-errors">
+                {{ form_errors(form.lastname) }}
+            </p>
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.lastname) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.lastname) }}
+				</p>
+
+            <p class="my-custom-class-for-errors">
+                {{ form_errors(form.birth_date) }}
+            </p>
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.birth_date) }}
+				</p>
+				<p class="text-center">
+					{{ form_widget(form.birth_date) }}
+				</p>
+            
+            <p class="my-custom-class-for-errors">
+                {{ form_errors(form.programs) }}
+            </p>
+				<p class="text-center mt-5 mb-1">
+					{{ form_label(form.programs) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.programs) }}
+				</p>
+                <p class="text-center mt-5 mb-5">
+                    <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
+                </p>
+            {{ form_end(form) }}
+		</div>
+	</div>
+</main>

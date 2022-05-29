@@ -1,21 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actors{% endblock %}
+{% block title %}Actor index{% endblock %}
 
 {% block body %}
-	<main class="container_all_series">
-		<div class="container">
-			<div class="container_series">
-				<h1 class="text-center mt-5 mb-5">Liste des Acteurs</h1>
-
-				<ul class="text-center">
-				{% for actor in actors %}
-					<li>{{ actor.firstname }} {{ actor.lastname }}</li>
-					<p class="text-center">
-						<a href="{{ path("actor_show", { id: actor.id }) }}">Voir en détail</a>
-					</p>
-				{% endfor %}
-			</div>
-		</div>
-	</main>
+	<main class="container">
+		<div class="container_series">
+			<h1 class="text-center mt-5 mb-5">Index des acteurs</h1>
+			<p class="mb-5">
+				<a href="{{ path('app_actor_new') }}">Create new</a>
+			</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Birth_date</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for actor in actors %}
+						<tr>
+							<td>{{ actor.id }}</td>
+							<td>{{ actor.firstname }}</td>
+							<td>{{ actor.lastname }}</td>
+							<td>{{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }}</td>
+							<td>
+                                <button class="btn btn-secondary btn-sm">
+								<a href="{{ path('app_actor_show', {'id': actor.id}) }}">show</a>
+								</button>
+								<button class="btn btn-secondary btn-sm">
+                                <a href="{{ path('app_actor_edit', {'id': actor.id}) }}">edit</a>
+                                </button>
+                            </td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+</main>
 {% endblock %}
