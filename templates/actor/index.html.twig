@@ -9,7 +9,7 @@
 				<h1 class="text-center mt-5 mb-5">Liste des Acteurs</h1>
 
 				<ul class="text-center">
-					{% for actor in actors %}
+				{% for actor in actors %}
 					<li>{{ actor.firstname }} {{ actor.lastname }}</li>
 					<p class="text-center">
 						<a href="{{ path("actor_show", { id: actor.id }) }}">Voir en détail</a>

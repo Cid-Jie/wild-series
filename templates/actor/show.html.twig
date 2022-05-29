@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor
+{% block title %}{{actor.id}}
 {% endblock %}
 
 {% block body %}
@@ -13,19 +13,19 @@
                 <h2 class="text-center mb-5">
                 né {{ actor.birthdate|date('Y-m-d') }}
                 </h2>
-                <pre>
-                    {{ dump(actor) }}
-                </pre>
-            <h1 class="text-center mt-5 mb-5">Séries : <h1>
-            {% for program in programs %}
-            <h2 class="text-center mt-5 mb-5">
-            Série {{ program.title }}</a>
-            </h2>
-            <p class="text-center">
-            <img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></li>
-            </p>
-            <p class="text-center mb-5">{{ program.synopsis }}</p>
-            {% endfor %}
+                <h1 class="text-center mt-5 mb-5">Séries : <h1>
+                    {% for program in actor.programs %}
+                        <h2 class="text-center mt-5 mb-5">
+                        <a href="/program/{{ program.id }}">{{ program.title }}</a>
+                        </h2>  
+                        <p class="text-center">
+                        <img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></li>
+                        </p>
+                        <p class="text-center mb-5">{{ program.synopsis }}</p>
+                    {% endfor %}
+                <p class="text-center mt-5 mb-5">
+                <a href="{{ path('actor_index') }}">Retour à la liste des acteurs</a>
+                </p>
             </div>
 		</div>
 	</main>

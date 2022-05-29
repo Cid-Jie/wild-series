@@ -29,7 +29,9 @@
 					<h1 class="text-center mt-5 mb-5">Acteurs :</h1>
 					<ul class= "text-center">
 						{% for actor in program.actors %}
-							<li><a href="">{{ actor.firstname }} {{actor.lastname }}</a></li>
+							
+							<li><a href="/actor/{{ actor.id }}">{{ actor.firstname }} {{actor.lastname }}</a></li>
+							
 						{% else %}
 							<li>Aucun acteur pour cette série</li>
 						{% endfor %}
