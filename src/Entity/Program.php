@@ -28,7 +28,7 @@ class Program
         maxMessage: "La série  saisie {{ value }} est trop longue et ne doit pas dépasser {{ limit }} caractères."
     )]
     #[Assert\Regex(
-        pattern: '/[Plus belle la vie]/i',
+        pattern: '/(Plus belle la vie)/i',
         match: false,
         message: 'On parle de vrai séries ici.'
     )]
