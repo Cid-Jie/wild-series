@@ -51,6 +51,15 @@
                             {{ form_widget(form.category) }}
                         </p>
 
+                    <p class="my-custom-class-for-errors">
+                        {{ form_errors(form.actors) }}
+                    </p>
+                        <p class="text-center mt-5 mb-1">
+                            {{ form_label(form.actors) }}
+                        </p>
+                        <p class="text-center mt-1 mb-5">
+                            {{ form_widget(form.actors) }}
+                        </p>
                         <p class="text-center mt-5 mb-5">
 
 					    <button class="btn btn-secondary btn-sm mt-5 mb-5" type="submit">Ajouter</button>
