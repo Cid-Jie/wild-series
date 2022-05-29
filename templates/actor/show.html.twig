@@ -30,6 +30,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<h3 class="text-center mt-5 mb-5"> Série associées :</h3>
+				<ul>
+				{% for program in actor.programs %}
+					<li><a href="#">{{ program.title}}</li>
+				{% endfor %}
+				</ul>
 				<p class="text-center mt-5 mb-3">
 					<a href="{{ path('app_actor_index') }}">back to list</a>
 				</p>
