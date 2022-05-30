@@ -101,6 +101,9 @@
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
+    "lorenzo/pinky": {
+        "version": "1.0.6"
+    },
     "monolog/monolog": {
         "version": "2.6.0"
     },
@@ -513,6 +516,9 @@
         "version": "v6.0.3"
     },
     "twig/extra-bundle": {
+        "version": "v3.4.0"
+    },
+    "twig/inky-extra": {
         "version": "v3.4.0"
     },
     "twig/twig": {

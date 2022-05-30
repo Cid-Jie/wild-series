@@ -8,10 +8,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EpisodeRepository::class)]
-#[UniqueEntity(
-    fields: 'title',
-    message: 'Cet épisode existe déjà.'
-)]
 class Episode
 {
     #[ORM\Id]
