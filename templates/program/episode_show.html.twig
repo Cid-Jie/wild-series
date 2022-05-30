@@ -12,10 +12,10 @@
                 <h1 class="text-center mt-5 mb-5">Episode : {{ episode.number }} - {{ episode.title }}</h1>
                 <p class="text-center mt-3">{{ episode.synopsis }}</p>
                 <p class="text-center mt-5">
-                    <a href="/program/{{ season.program.id }}/season/{{ season.id }}">Retour vers la sélection des épisodes</a>
+                    <a href="/program/{{ season.program.slug }}/season/{{ season.id }}">Retour vers la sélection des épisodes</a>
                 </p>
 				<p class="text-center mt-2 mb-5">
-					<a href="/program/{{ season.program.id }}">Retour vers la sélection des saisons</a>
+					<a href="/program/{{ season.program.slug }}">Retour vers la sélection des saisons</a>
 				</p>
 			</div>
 		</div>

@@ -15,7 +15,7 @@
                 <h1 class="text-center mt-5 mb-5">Episodes disponibles :</h1>
                 <ul>
                  {% for episode in season.episodes %}
-                    <li class="text-center mt-5 mb-5"><a href="/program/{{ season.program.id }}/season/{{ season.id }}/episode/{{ episode.id}}">
+                    <li class="text-center mt-5 mb-5"><a href="/program/{{ season.program.slug }}/season/{{ season.id }}/episode/{{ episode.slug}}">
                     Episode : {{ episode.number }} - {{ episode.title }}</a></li>
                 {% endfor %}
                 </ul>

@@ -17,7 +17,7 @@
 							{{ program.category.name }}
 						</h2>
 						<p class="text-center">
-							<a href="{{ path("program_show", { id: program.id }) }}">Voir en détail</a>
+							<a href="{{ path("program_show", { slug: program.slug }) }}">Voir en détail</a>
 						</p>
 						<p class="text-center">
 							<img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p>

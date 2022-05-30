@@ -13,7 +13,7 @@
 					{% for program in programs %}
 						<div class="container_series">
 
-							<a href="{{ path("program_show", { id: program.id } ) }}">
+							<a href="{{ path("program_show", { slug: program.slug } ) }}">
 								<h2 class="text-center mt-5 mb-3">{{ program.title }}</h2>
 							</a>
 
