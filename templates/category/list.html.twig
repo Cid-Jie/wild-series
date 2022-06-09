@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les catégories{% endblock %}
+
+{% block body %}
+	<main class="container_all_series">
+		<div class="container">
+			<div class="container_series">
+				<h1 class="text-center mt-5 mb-5">Toutes les catégories :</h1>
+                    <p class="mb-5">
+				        <a href="{{ path('category_new') }}">Créer une nouvelle catégorie</a>
+			        </p>
+                    <table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+                            <th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+				{% for category in categories %}
+                        <tr>
+                            <td>{{ category.id }}</td>
+						    <td>{{ category.name }}</td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm mt-5 mb-5" type="submit"><a href={{ path('category_edit', {'id': category.id}) }}>Modifier</a></button>
+                                <button class="btn btn-secondary btn-sm mt-5 mb-5" type="submit"><a href={{ path('category_show', {'categoryName': category.name}) }}>Show</a></button>
+                            </td>
+                {% endfor %}
+                </tbody>
+                <p class="text-center mt-5 mb-5">
+					<a href="{{ path('app_index') }}">
+						Retour à l'accueil</a>
+				</p>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -24,6 +24,15 @@ class CategoryController extends AbstractController
          ]);
     }
 
+    #[Route('/list', name: 'list')]
+    public function list(CategoryRepository $categoryRepository): Response
+    {
+        $categories = $categoryRepository->findAll();
+        return $this->render('category/list.html.twig', [
+            'categories' => $categories,
+         ]);
+    }
+
     #[Route('/new', name:'new')]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -41,7 +50,7 @@ class CategoryController extends AbstractController
             // For example : persiste & flush the entity
             $categoryRepository->add($category, true);
             // And redirect to a route that display the result
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('category_list');
         }
 
         // Render the form
@@ -77,6 +86,34 @@ class CategoryController extends AbstractController
             'category' => $category,
             'programs' => $programs,
         ]);
+    }
+
+    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categoryRepository->add($category, true);
+
+            return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('category/edit.html.twig', [
+            'category' => $category,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+            $categoryRepository->remove($category, true);
+        }
+
+        return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
     }
 
 }

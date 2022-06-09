@@ -1,0 +1,22 @@
+<main class="container_all_series">
+	<div class="container">
+		<div class="container_series">
+            {{ form_start(form) }}
+			<p class="my-custom-class-for-errors">
+                {{ form_errors(form.name) }}
+            </p>
+            	<p class="text-center mt-5 mb-1">
+					{{ form_label(form.name) }}
+				</p>
+				<p class="text-center mt-1 mb-5">
+					{{ form_widget(form.name) }}
+				</p>
+				<p class="text-center mt-5 mb-5">
+                    <p class="text-center">
+                        <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
+                    </p>
+                </p>
+            {{ form_end(form) }}
+		</div>
+	</div>
+</main>
