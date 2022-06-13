@@ -1,0 +1,26 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main class="container">
+    <h1 class="text-center mt-5 mb-5">Connexion</h1> 
+	{% if error %}
+		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+	<form action="{{ path('login') }}" method="post">
+        <p class="text-center mt-5 mb-5">
+		    <label for="username">Email :</label></br>
+		    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+        </p>
+        <p class="text-center mt-5 mb-5">
+		    <label for="password">Mot de passe :</label></br>
+		    <input type="password" id="password" name="_password"/>
+		<input type="hidden" name="_target_path" value="/"/>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </p>
+        <p class="text-center mt-5 mb-5">
+		<button class="btn btn-secondary btn-sm" type="submit">login</button>
+        </p>
+	</form>
+</main>
+{% endblock %}

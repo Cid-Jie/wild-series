@@ -19,7 +19,7 @@
 							<a class="dropdown-item" href="/program">Toutes les séries</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/actor">Tous les acteurs</a>
+							<a class="dropdown-item" href="#">Tous les acteurs</a>
 						</li>
 					</ul>
 				</li>
@@ -64,9 +64,12 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Mes favoris</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Se connecter</a>
-				</li>
+				{% if app.user %}
+					<a class="nav-link">Bonjour {{ app.user.name }}<a>
+					<a class="nav-link" href="{{ path('logout') }}"> Se déconnecter</a>
+				{% else %}
+					<a class="nav-link" href="{{ path('login') }}"> Se connecter</a>
+				{% endif %}
 			</ul>
 		</div>
 	</div>
