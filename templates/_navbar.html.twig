@@ -39,6 +39,7 @@
 						</li>
 					</ul>
 				</li>
+				{% if is_granted('ROLE_ADMIN') %}
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Admin
@@ -61,6 +62,7 @@
 						</li>
 					</ul>
 				</li>
+				{% endif %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Mes favoris</a>
 				</li>
