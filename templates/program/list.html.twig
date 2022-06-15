@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program index{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<div class="container_series">
+			<h1 class="text-center mt-5 mb-5">Index des séries</h1>
+			<p class="mb-5">
+				<a href="{{ path('program_new') }}">Créer une nouvelle série</a>
+			</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Titre</th>
+							<th>Synopsis</th>
+							<th>Poster</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for program in programs %}
+							<tr>
+								<td>{{ program.id }}</td>
+								<td>{{ program.title }}</td>
+								<td>{{ program.synopsis|striptags|slice(0,50) }}</td>
+								<td><img src="{{ program.poster }}" width="60px"></td>
+								<td>
+									<button class="btn btn-secondary btn-sm">
+										<a href="{{ path('program_show', {'slug': program.slug}) }}">show</a>
+									</button>
+									<button class="btn btn-secondary btn-sm">
+										<a href="{{ path('program_edit', {'slug': program.slug}) }}">edit</a>
+									</button>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="5">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+			    </table>
+        </div>
+</main>
+{% endblock %}

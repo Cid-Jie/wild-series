@@ -1,0 +1,22 @@
+
+{{ form_start(form) }}
+    <p class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </p>
+        <p class="text-center mt-5 mb-1">
+            {{ form_label(form.comment) }}
+        </p>
+        <p class="text-center mt-1 mb-5">
+            {{ form_widget(form.comment) }}
+        </p>
+        <p class="text-center mt-5 mb-1">
+            {{ form_label(form.rate) }}
+        </p>
+        <p class="text-center mt-1 mb-5">
+            {{ form_widget(form.rate) }}
+        </p>
+
+    <div class="text-center mt-5 mb-5">
+        <button class="btn btn-secondary btn-sm">Envoyer mon commentaire</button>
+    </div>
+{{ form_end(form) }}

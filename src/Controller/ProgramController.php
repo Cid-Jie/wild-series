@@ -33,6 +33,15 @@ class ProgramController extends AbstractController
          ]);
     }
 
+    #[Route('/list', name: 'list')]
+    public function list(ProgramRepository $programRepository): Response
+    {
+        $programs = $programRepository->findAll();
+        return $this->render('program/list.html.twig', [
+            'programs' => $programs,
+         ]);
+    }
+
     #[Route('/new', name: 'new')]
     public function new(Request $request, MailerInterface $mailer ,ProgramRepository $programRepository, Slugify $slugify)
     {
@@ -75,7 +84,35 @@ class ProgramController extends AbstractController
             'seasons' => $seasons,
         ]);
     }
+
+    #[Route('/{slug}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Program $program, ProgramRepository $programRepository): Response
+    {
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $programRepository->add($program, true);
+
+            return $this->redirectToRoute('program_list', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('program/edit.html.twig', [
+            'program' => $program,
+            'form' => $form,
+        ]);
+    }
     
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request,Program $program, ProgramRepository $programRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+            $programRepository->remove($program, true);
+        }
+
+        return $this->redirectToRoute('program_list', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route("/{program_slug}/season/{season_id}", methods: 'GET', name: 'season_show')]
     #[ParamConverter('program', options: ['mapping' => ['program_slug' => 'slug']])]
     #[Entity('season', options: ['id' => 'season_id'])]

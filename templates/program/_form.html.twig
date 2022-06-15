@@ -1,22 +1,58 @@
+<div>
+	{{ form_start(form) }}
 
-{{ form_start(form) }}
-    <p class="my-custom-class-for-errors">
-        {{ form_errors(form) }}
+	<p class="my-custom-class-for-errors">
+		{{ form_errors(form.title) }}
+	</p>
+	<p class="text-center mt-5 mb-1">
+		{{ form_label(form.title) }}
+	</p>
+	<p class="text-center mt-1 mb-5">
+		{{ form_widget(form.title) }}
+	</p>
+
+	<p class="my-custom-class-for-errors">
+		{{ form_errors(form.synopsis) }}
+	</p>
+	<p class="text-center mt-5 mb-1">
+		{{ form_label(form.synopsis) }}
+	</p>
+	<p class="text-center mt-1 mb-5">
+		{{ form_widget(form.synopsis) }}
+	</p>
+
+	<p class="my-custom-class-for-errors">
+		{{ form_errors(form.poster) }}
+	</p>
+	<p class="text-center mt-5 mb-1">
+		{{ form_label(form.poster) }}
+	</p>
+	<p class="text-center mt-1 mb-5">
+		{{ form_widget(form.poster) }}
+	</p>
+
+	<p class="my-custom-class-for-errors">
+		{{ form_errors(form.category) }}
+	</p>
+	<p class="text-center mt-5 mb-1">
+		{{ form_label(form.category) }}
+	</p>
+	<p class="text-center mt-1 mb-5">
+		{{ form_widget(form.category) }}
+	</p>
+
+	<p class="my-custom-class-for-errors">
+		{{ form_errors(form.actors) }}
+	</p>
+	<p class="text-center mt-5 mb-1">
+		{{ form_label(form.actors) }}
+	</p>
+	<p class="text-center mt-1 mb-5">
+		{{ form_widget(form.actors) }}
+	</p>
+    <p class="text-center">
+        <button class="btn btn-secondary btn-sm">{{ button_label|default('Save') }}</button>
     </p>
-        <p class="text-center mt-5 mb-1">
-            {{ form_label(form.comment) }}
-        </p>
-        <p class="text-center mt-1 mb-5">
-            {{ form_widget(form.comment) }}
-        </p>
-        <p class="text-center mt-5 mb-1">
-            {{ form_label(form.rate) }}
-        </p>
-        <p class="text-center mt-1 mb-5">
-            {{ form_widget(form.rate) }}
-        </p>
-
-    <div class="text-center mt-5 mb-5">
-        <button class="btn btn-secondary btn-sm">Envoyer mon commentaire</button>
-    </div>
-{{ form_end(form) }}
+		{{ form_end(form) }}
+	</p>
+</div>

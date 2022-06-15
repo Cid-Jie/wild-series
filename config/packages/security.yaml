@@ -26,6 +26,10 @@ security:
             logout:
                 path: logout
 
+    role_hierarchy:
+        ROLE_CONTRIBUTOR: ROLE_USER
+        ROLE_ADMIN: ROLE_CONTRIBUTOR
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
