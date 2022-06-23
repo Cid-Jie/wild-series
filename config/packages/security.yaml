@@ -39,8 +39,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/contributor, roles: ROLE_USER }
+         #- { path: ^/admin, roles: ROLE_ADMIN }
+         #- { path: ^/contributor, roles: ROLE_USER }
+        - { path: ^/program/new, roles: ROLE_CONTRIBUTOR }
+        - { path: ^/program/[a-z-]+/edit, roles: ROLE_CONTRIBUTOR }
 
 when@test:
     security:

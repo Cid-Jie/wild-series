@@ -22,6 +22,7 @@ class UserFixtures extends Fixture
         $faker = Factory::create();
         // Création d’un utilisateur de type “contributeur” (= auteur)
         $contributor = new User();
+        $contributor->setName($faker->name());
         $contributor->setEmail('contributor@monsite.com');
         $contributor->setRoles(['ROLE_CONTRIBUTOR']);
         $hashedPassword = $this->passwordHasher->hashPassword(
@@ -33,6 +34,7 @@ class UserFixtures extends Fixture
  
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
+        $admin->setName($faker->name());
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $hashedPassword = $this->passwordHasher->hashPassword(

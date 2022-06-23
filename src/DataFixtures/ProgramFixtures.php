@@ -78,14 +78,18 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setTitle($programLoading['title']);
             $title = $this->slug->generate($programLoading['title']);
             $program->setSlug($title);
+
             $program->setSynopsis($programLoading['synopsis']);
+
             $program->setPoster($programLoading['poster']);
+
             $program->setCategory($this->getReference('category_' . $programLoading['category_id']));
-            $this->addReference('program_' . $programNumber, $program);
+            $this->addReference('program_'. $programNumber, $program);
             $programNumber++;
+
             $manager->persist($program);
         }  
-        $manager->flush();      
+        $manager->flush();
     }
 
     public function getDependencies()
