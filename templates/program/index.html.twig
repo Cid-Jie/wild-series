@@ -26,6 +26,9 @@
 						</p>
 
 					</div>
+				{% if is_granted("ROLE_ADMIN") %}
+					<a class="text-center" href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+				{% endif %}
 				{% else %}
 					<p class="text-center mt-5 mb-5">
 						Désolé, aucune série trouvée.</p>
@@ -35,6 +38,7 @@
 					<a href="{{ path('app_index') }}">
 						Retour à l'accueil</a>
 				</p>
+
 			</div>
 		</div>
 	</main>

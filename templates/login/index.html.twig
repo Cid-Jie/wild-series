@@ -22,5 +22,12 @@
 			<button class="btn btn-secondary btn-sm" type="submit">Login</button>
         </p>
 	</form>
+		<p class="text-center mt-5 mb-5">
+			<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+        </p>
+		<p class="text-center mt-5 mb-5">
+			Vous n'avez pas encore de compte chez nous ? 
+			<a href="{{ path('app_register') }}">Créer un compte !</a>
+        </p>
 </main>
 {% endblock %}

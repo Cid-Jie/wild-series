@@ -34,6 +34,7 @@ class CategoryController extends AbstractController
          ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name:'new')]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -89,6 +90,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -107,6 +109,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {

@@ -43,6 +43,7 @@ class UserFixtures extends Fixture
         );
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
+        $this->addReference('owner_' . $admin->getName(), $admin);
         
         // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
