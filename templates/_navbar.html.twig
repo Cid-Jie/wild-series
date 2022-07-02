@@ -46,19 +46,19 @@
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li>
-							<a class="dropdown-item" href="/category/list">Index des catégories</a>
+							<a class="dropdown-item" href="{{ path('category_list') }}">Index des catégories</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/program/list">Index des séries</a>
+							<a class="dropdown-item" href="{{ path('program_list') }}">Index des séries</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/season">Index des saisons</a>
+							<a class="dropdown-item" href="{{ path('app_season_index') }}">Index des saisons</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/episode">Index des épisodes</a>
+							<a class="dropdown-item" href="{{ path('app_episode_index') }}">Index des épisodes</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/actor">Index des acteurs</a>
+							<a class="dropdown-item" href="{{ path('app_actor_index') }}">Index des acteurs</a>
 						</li>
 					</ul>
 				</li>
@@ -67,10 +67,33 @@
 					<a class="nav-link" href="#">Mes favoris</a>
 				</li>
 				{% if app.user %}
-					<a class="nav-link">Bonjour {{ app.user.name }}<a>
-					<a class="nav-link" href="{{ path('logout') }}"> Se déconnecter</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Bonjour {{ app.user.name }}
+					</a>				
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li>
+							<a class="dropdown-item" href="{{ path('profile') }}">Mon compte</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('logout') }}">Se déconnecter</a>
+						</li>
+					</ul>
+				</li>
 				{% else %}
-					<a class="nav-link" href="{{ path('login') }}"> Se connecter</a>
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Connexion
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li>
+							<a class="nav-link" href="{{ path('login') }}">Se connecter</a>
+						</li>
+						<li>
+							<a class="nav-link" href="{{ path('app_register') }}">Créer un compte</a>
+						</li>
+					</ul>
+				</li>
 				{% endif %}
 			</ul>
 		</div>

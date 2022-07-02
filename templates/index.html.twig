@@ -11,15 +11,22 @@
     <main class="container">
 		<div class="container_series">
 			<h1 class="text-center mt-5 mb-5">A LA UNE</h1>
-        <p class="text-center">      
-            <img src="{{ asset('build/images/series.jpeg') }}" alt="serie" width="600"/>
-        </p>
-        
-        <p class="text-center">      
-            <img src="{{ asset('build/images/series.jpeg') }}" alt="serie" width="600"/>
-        </p>
-        <img id="bandefilm" src="{{ asset('build/images/banner.png') }}" alt="bande film"/>
-		</div>   
+        {% for program in programs %}  
+            <div>
+                <h2 class="text-center mt-5 mb-2">
+                    {{ program.title }} - {{ program.category.name }}
+                </h2>
+                <p class="text-center">
+                    <a href="{{ path("program_show", { slug: program.slug }) }}">Voir en détail</a>
+                </p>
+                <p class="text-center">
+                    <img src="{{ program.poster }}" alt="{{ program.title }} poster" class="photo_serie"></p>
+                <p class="text-center m-5">
+                    {{ program.synopsis }}
+                </p>
+			</div>
+        {% endfor %}
+        </div>
     </main>
 </div>
 {% endblock %}

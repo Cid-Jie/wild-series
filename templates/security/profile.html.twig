@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container_all_series">
+    <main class="container">
+		<div class="container_series">
+			<h1 class="text-center mt-5 mb-5">Mon compte</h1>
+            {% if app.user %}
+                <h2 class="text-center mt-5 mb-5">Name : {{ app.user.name }}</h2>
+                <h2 class="text-center mt-5 mb-5">Email : {{ app.user.email }}</h2>
+                <h2 class="text-center mt-5 mb-5">Password : ******</h2>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}
