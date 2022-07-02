@@ -131,6 +131,7 @@ class ProgramController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
             $programRepository->remove($program, true);
+            $this->addFlash('warning', 'La série a bien été supprimée.');
         }
 
         return $this->redirectToRoute('program_list', [], Response::HTTP_SEE_OTHER);

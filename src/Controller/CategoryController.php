@@ -51,6 +51,7 @@ class CategoryController extends AbstractController
             // Deal with the submitted data
             // For example : persiste & flush the entity
             $categoryRepository->add($category, true);
+            $this->addFlash('success', 'La catégorie a bien été ajoutée.');
             // And redirect to a route that display the result
             return $this->redirectToRoute('category_list');
         }
@@ -115,6 +116,7 @@ class CategoryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
+            $this->addFlash('warning', 'La catégorie a bien été supprimée.');
         }
 
         return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);

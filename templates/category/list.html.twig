@@ -3,6 +3,13 @@
 {% block title %}Toutes les catégories{% endblock %}
 
 {% block body %}
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 	<main class="container_all_series">
 		<div class="container">
 			<div class="container_series">

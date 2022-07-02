@@ -3,6 +3,13 @@
 {% block title %}Actor index{% endblock %}
 
 {% block body %}
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 	<main class="container">
 		<div class="container_series">
 			<h1 class="text-center mt-5 mb-5">Index des acteurs</h1>

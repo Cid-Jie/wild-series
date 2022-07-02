@@ -30,10 +30,9 @@ class ActorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $actorRepository->add($actor, true);
-
+            $this->addFlash('success', 'L\'acteur a bien été ajoutée.');
             return $this->redirectToRoute('app_actor_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('actor/new.html.twig', [
             'actor' => $actor,
             'form' => $form,
@@ -71,6 +70,7 @@ class ActorController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$actor->getId(), $request->request->get('_token'))) {
             $actorRepository->remove($actor, true);
+            $this->addFlash('warning', 'L\'acteur a bien été supprimé.');
         }
 
         return $this->redirectToRoute('app_actor_index', [], Response::HTTP_SEE_OTHER);
