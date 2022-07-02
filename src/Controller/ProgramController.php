@@ -17,6 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -27,11 +28,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProgramController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(ProgramRepository $programRepository): Response
+    public function index(ProgramRepository $programRepository, Request $request): Response
     {
-        $programs = $programRepository->findAll();
+        $form = $this->createForm(SearchType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData(['search']);
+            $programs = $programRepository->findLikeName($search);
+        } else {
+             $programs = $programRepository->findAll();
+        }
+       
         return $this->render('program/index.html.twig', [
             'programs' => $programs,
+            'form' => $form->createView(),
          ]);
     }
 
@@ -57,6 +68,7 @@ class ProgramController extends AbstractController
             $program->setSlug($slug);
             $program->setOwner($this->getUser());
             $programRepository->add($program, true);
+            $this->addFlash('success', 'La série a bien été ajoutée.');
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
                 ->to('your_email@example.com')
@@ -148,11 +160,9 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setAuthor($this->getUser());
             $comment->setEpisode($episode);
-
             $manager->persist($comment);
             $commentRepository->add($comment, true);
             $manager->flush();
-
         }
 
         $comments = $commentRepository->findAll();

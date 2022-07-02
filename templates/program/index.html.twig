@@ -3,10 +3,23 @@
 {% block title %}Toutes les séries{% endblock %}
 
 {% block body %}
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 	<main class="container_all_series">
 		<div class="container">
 			<div class="container_series">
 				<h1 class="text-center mt-5 mb-5">Toutes les séries :</h1>
+				<div class="text-center">
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button>Search</button>
+				{{ form_end(form) }}
+				</div>
 				{% for program in programs %}
 					<div>
 						<h2 class="text-center mt-5 mb-2">

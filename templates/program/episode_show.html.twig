@@ -19,20 +19,31 @@
 				</p>
 				<div>
 					<h3 class="text-center mt-5 mb-5">Commentaires des internautes : </h3>
-					{% if comments.episode.id is defined %}
+{# 					{% if app.user %}
+						{% include 'program/_form_comment.html.twig' %}
+					{% else %}
+						<h3 class="text-center mt-5"> Vous devez vous connecter pour laisser un commentaire.</h3>
+					{% endif %}
 					<div class="container">
-						{% for comment in comments.episode.id %}
+					
+					{% for comment in comments %}
+						<h6 class="mr-5">De {{ comment.author.name}} / Note : {{ comment.rate }} - {{ comment.comment }}</h6>
+					{% endfor %} #}
+ 					{% if comments is defined %}
+					<div class="container">
+						{% for comment in comments %}
 							<h6 class="mr-5">De {{ comment.author.name}} / Note : {{ comment.rate }} - {{ comment.comment }}</h6>
 						{% endfor %}
 					{% else %}
 							<h6 class="text-center">Soyez le premier à écrire un commentaire et à noter cet épisode !</h6>
 					</div>
-					{% endif %}	
+					{% endif %}
+					
 					{% if app.user %}
 						{% include 'program/_form_comment.html.twig' %}	
 					{% else %}
 						<h3 class="text-center mt-5"> Vous devez vous connecter pour laisser un commentaire.</h3>
-					{% endif %}				
+					{% endif %}	
 				</div>
 			</div>
 		</div>

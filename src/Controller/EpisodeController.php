@@ -35,6 +35,7 @@ class EpisodeController extends AbstractController
             $slug = $slugify->generate($episode->getTitle());
             $episode->setSlug($slug);
             $episodeRepository->add($episode, true);
+            $this->addFlash('success', 'L\'épisode a bien été ajoutée.');
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
                 ->to('your_email@example.com')
