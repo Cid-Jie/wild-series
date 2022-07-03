@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\CategoryType;
-use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -67,6 +66,18 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+            $categoryRepository->remove($category, true);
+            $this->addFlash('warning', 'La catégorie a bien été supprimée.');
+        }
+
+        return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/{categoryName}', name: 'show')]
     public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
     {
@@ -91,7 +102,6 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -108,18 +118,6 @@ class CategoryController extends AbstractController
             'category' => $category,
             'form' => $form,
         ]);
-    }
-
-    #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}', name: 'delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
-            $categoryRepository->remove($category, true);
-            $this->addFlash('warning', 'La catégorie a bien été supprimée.');
-        }
-
-        return $this->redirectToRoute('category_list', [], Response::HTTP_SEE_OTHER);
     }
 
 }
