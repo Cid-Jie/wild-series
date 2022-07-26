@@ -16,7 +16,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,6 +100,22 @@ class ProgramController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/watchlist', name: 'watchlist', methods: ["GET","POST"])]
+    public function addToWatchlist(Request $request, Program $program, EntityManagerInterface $entityManager): Response
+    {
+        /* if ($this->getUser()->isInWatchlist($program)) {
+            $this->getUser()->removeFromWatchlist($program);
+        } else {
+            $this->getUser()->addToWatchlist($program);
+        } */
+        $this->getUser->addToWatchlist($program);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('season_show', [
+            'program' => $program,
+        ]);
+    }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{slug}/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Program $program, ProgramRepository $programRepository): Response
@@ -152,7 +167,7 @@ class ProgramController extends AbstractController
     #[ParamConverter('program', options: ['mapping' => ['program_slug' => 'slug']])]
     #[Entity('season', options: ['id' => 'season_id'])]
     #[ParamConverter('episode', options: ['mapping' => ['episode_slug' => 'slug']])]
-    public function showEpisode(EntityManagerInterface $manager ,Program $program, Season $season, Episode $episode, CommentRepository $commentRepository, Request $request )
+    public function showEpisode(EntityManagerInterface $manager, Program $program, Season $season, Episode $episode, CommentRepository $commentRepository, Request $request )
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);

@@ -13,3 +13,6 @@ import './bootstrap';
 
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
+
+//import bootstrap icons
+import 'bootstrap-icons/font/bootstrap-icons.css'; 

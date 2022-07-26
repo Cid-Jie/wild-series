@@ -8,7 +8,14 @@
 	<main class="container_all_series">
 		<div class="container">
 			<div class="container_series">
-				<h1 class="text-center mt-5 mb-2">{{ program.title }}</h1>
+				<h1 class="text-center mt-5 mb-2">
+				{{ program.title }}
+				{% if app.user %}
+				<a href="{{ path('program_watchlist', {id: program.id})}}">
+    				<i class="bi {{ app.user.isInWatchlist(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+				</a>
+				{% endif %}
+				</h1>
 				<p class="text-center mt-5"><img src="{{ program.poster }}" alt="{{ program.title }} poster" id="poster"></p>
 				<div>
 					<p class="text-center">{{ program.synopsis }}</p>
@@ -29,9 +36,8 @@
 					<h1 class="text-center mt-5 mb-5">Acteurs :</h1>
 					<ul class= "text-center">
 						{% for actor in program.actors %}
-							
+
 							<li><a href="/actor/{{ actor.id }}">{{ actor.firstname }} {{actor.lastname }}</a></li>
-							
 						{% else %}
 							<li>Aucun acteur pour cette série</li>
 						{% endfor %}
